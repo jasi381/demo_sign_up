@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import 'di/service_locator.dart';
@@ -14,6 +15,9 @@ void main() async {
           messagingSenderId: "367104753601",
           projectId: "dmeo-1c159"));
   setUpLocator();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent));
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   runApp(
     const ProviderScope(
       child: MyApp(),
@@ -26,8 +30,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomeScreen(),
+    return  MaterialApp(
+      home: const HomeScreen(),
+      routes: {
+        '/home' :(context) => const HomeScreen(),
+        '/login' :(context) => const Dummy()
+      },
     );
   }
 }
@@ -51,12 +59,23 @@ class HomeScreen extends ConsumerWidget {
             if (isLoading == true)
               const CircularProgressIndicator()
             else
+
+              const TextField(
+                obscureText: true,
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Password',
+                ),
+              ),
               ElevatedButton(
                 onPressed: () {
                   viewModel.signUpWithEmailPassword(
-                      "sjasmeet438@gmail.com", "jameet34", () {
-                    print("Done SignUp");
-                  });
+                      "sjasmet38@gmail.com",
+                      "jameet34",
+                          () {
+                    Navigator.pushReplacementNamed(context, '/login');
+                  }
+                  );
                 },
                 child: const Text("SignUp"),
               )
@@ -66,3 +85,21 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 }
+
+
+class Dummy extends StatelessWidget {
+  const Dummy({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.blue,
+      child: const Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+        Text("Jasmeet Singh")
+      ],),
+    );
+  }
+}
+
