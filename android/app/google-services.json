@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "367104753601",
+    "project_id": "dmeo-1c159",
+    "storage_bucket": "dmeo-1c159.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367104753601:android:f901c25ceaa73a1ad83940",
+        "android_client_info": {
+          "package_name": "com.example.demo_sign_up"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA4DrdeDUzTCpYNGsBjsGLZ9smo8T3fhMw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
